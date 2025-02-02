@@ -7,7 +7,5 @@ import java.util.List;
 @Setter
 
 public class ProductList {
-    private List<Product> products;
-
-
+    private List<Product> products; //liste over alle produkterne 
 }

@@ -2,16 +2,26 @@ package com.coolshop.exercise1;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 
-public class Functionalities {
+
+class ProductService {
     ProductList productList;
 
-    public Functionalities(String json) {
+    //mapper JSON til Productlist-object
+    public ProductService(String json) {
         Gson gson = new Gson();
         this.productList = gson.fromJson(json, ProductList.class);
+        for(Product product: productList.getProducts()){
+            product.setPrice(product.getPrice()/100); // Ændre til rigtige pris, grundet JSON var et stort tal
+        }
 
     }
 
+    // Finder ID for det dyreste produkt
     public String findIdOfHighest(){
+
+        if(productList.getProducts().isEmpty()){
+            return "No products available";
+        }
 
         double highest = productList.getProducts().get(0).getPrice();
         String highestID = productList.getProducts().get(0).getId();
@@ -25,12 +35,16 @@ public class Functionalities {
 
         return highestID;
     }
-
-    public int LowestPrice(){
-        int lowest = productList.getProducts().get(0).getPrice();
+     // Finder den laveste pris blandt produkterne
+    public double getLowestPrice(){
+        if(productList.getProducts().isEmpty()){
+            return 0; // Returnerer 0, hvis der ikke er produkter
+        }
+    
+        double lowest = productList.getProducts().get(0).getPrice();
 
         for(Product product : productList.getProducts()){
-            int currentPrice = product.getPrice();
+            double currentPrice = product.getPrice();
             if(currentPrice<=lowest){
                 lowest = currentPrice;
             }
@@ -38,7 +52,8 @@ public class Functionalities {
         return lowest;
     }
 
-    public ArrayList<String>IdOfStock(){
+    // Returnerer en liste over IDs på produkter, der er på lager
+    public ArrayList<String>getIdsOfInStock(){
         ArrayList<String>inStock = new ArrayList<>();
         for(Product product: productList.getProducts()){
             if(product.getStock_status().equals("in_stock")){
@@ -48,7 +63,8 @@ public class Functionalities {
         return inStock;
     }
 
-    public double avgVolume(){
+    // Beregner gennemsnitligt volumen i cm³
+    public double getAvgVolume(){
         double totalVolume = 0;
         double currentVolume;
         for(Product product: productList.getProducts()){
@@ -57,17 +73,18 @@ public class Functionalities {
             totalVolume += currentVolume;
         }
 
-        double averageVolumeCM =  (totalVolume / 100) / productList.getProducts().size();
+        double averageVolumeCM =  (totalVolume* 0.001) / productList.getProducts().size();
         return averageVolumeCM;
     }
 
-    public void AllTogether(){
-        System.out.println("Lowest price: " + this.LowestPrice());
+    // Udskriver alle detaljer om produkterne
+    public void allTogether(){
+        System.out.println("Lowest price: " + this.getLowestPrice());
         System.out.println("_________________________________");
         System.out.println("Id of highest price product: " + this.findIdOfHighest());
         System.out.println("_________________________________");
-        System.out.println("id's of products in stock: " + this.IdOfStock());
+        System.out.println("id's of products in stock: " + this.getIdsOfInStock());
         System.out.println("_________________________________");
-        System.out.println("Average colume in cm3: "+ this.avgVolume());
+        System.out.println("Average colume in cm3: "+ this.getAvgVolume());
     }
 }

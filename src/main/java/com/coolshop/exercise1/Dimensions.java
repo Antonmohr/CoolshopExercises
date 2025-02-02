@@ -5,6 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+
 public class Dimensions {
     private int length_mm;
     private int width_mm;
@@ -28,6 +29,5 @@ public class Dimensions {
                 ", weight_g=" + weight_g +
                 '}';
     }
-
 
 }
