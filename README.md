@@ -1,4 +1,7 @@
 # CoolshopExercises
+Programmet er lavet med Maven for dependencies
+
+For at køre det skal du køre main.java i den ønskede exercise mappe
 
 ##Exercise 1
 Viser Opgave 1 som beskrevet i mailen 
@@ -10,5 +13,4 @@ Viser Opgave 1 som beskrevet i mailen
 
 ##Exercise 2
 Viser calculate delivery date opgaven
-
-For at køre det skal du køre main.java i den ønskede exercise mappe
+- Java.Time: til at arbejde med tid og datoer 

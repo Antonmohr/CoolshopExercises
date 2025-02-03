@@ -37,12 +37,12 @@ class DeliveryCalculator{
         LocalDate secondPinse = SecondPinse(orderYear);
 
         // Tilføjer faste helligdage
-        Holidays.add(MonthDay.of(1, 1)); 
-        Holidays.add(MonthDay.of(6, 5)); 
-        Holidays.add(MonthDay.of(12, 31)); 
-        Holidays.add(MonthDay.of(12, 24)); 
-        Holidays.add(MonthDay.of(12, 25)); 
-        Holidays.add(MonthDay.of(12, 26)); 
+        Holidays.add(MonthDay.of(1, 1)); //Nytår
+        Holidays.add(MonthDay.of(6, 5));  //Constitution
+        Holidays.add(MonthDay.of(12, 31)); //Nytår
+        Holidays.add(MonthDay.of(12, 24)); //Jul
+        Holidays.add(MonthDay.of(12, 25)); //FørsteJuledag
+        Holidays.add(MonthDay.of(12, 26)); //Anden juledag
 
         // Tilføjer de dynamiske helligdage 
         Holidays.add(MonthDay.from(easter));
@@ -71,7 +71,7 @@ class DeliveryCalculator{
         }
         return deliveryDate;
     }
-
+    
     private boolean isWorkDay(LocalDate date) {  
             return !(date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY || Holidays.contains(MonthDay.from(date)));
     }
