@@ -15,7 +15,7 @@ Viser Opgave 1 som beskrevet i mailen
 Viser calculate delivery date opgaven
 - Java.Time: til at arbejde med tid og datoer 
 
-# For at køre program
+# Guide til at køre program
 
 #Sikrer at du har Java 17 og Maven
 
