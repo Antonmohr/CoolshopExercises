@@ -14,3 +14,22 @@ Viser Opgave 1 som beskrevet i mailen
 ##Exercise 2
 Viser calculate delivery date opgaven
 - Java.Time: til at arbejde med tid og datoer 
+
+# For at køre program
+
+#Sikrer at du har Java 17 og Maven
+
+#Naviger til project directory
+
+#Køre følgende kommandoer i terminal:
+
+mvn clean compile 
+
+mvn package
+
+#exercise 1:
+mvn exec:java -Dexec.mainClass="com.coolshop.exercise1.Main"
+
+#exercise 2:
+mvn exec:java -Dexec.mainClass="com.coolshop.exercise2.Main"
+
